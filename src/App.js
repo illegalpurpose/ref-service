@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 import "./App.css";
+
+// ─── TELEGRAM BOT CONFIG ────────────────────────────────────────────────────────
+const TELEGRAM_BOT_TOKEN = "YOUR_BOT_TOKEN_HERE";
+const TELEGRAM_CHAT_ID = "YOUR_CHAT_ID_HERE";
 
 // ─── TRANSLATIONS ────────────────────────────────────────────────────────────
 const translations = {
@@ -14,9 +19,7 @@ const translations = {
         },
         hero: {
             badge: "Профессиональный авто сервис",
-            title: "REF",
-            titleSub: "SERVICE",
-            subtitle: "Надёжный ремонт и обслуживание автомобилей в Молдове",
+            title: "Надёжный ремонт и обслуживание автомобилей в Молдове",
             description:
                 "Диагностика, ремонт кондиционеров и полное техническое обслуживание вашего автомобиля. Работаем быстро, честно и качественно.",
             ctaPrimary: "Записаться на приём",
@@ -33,8 +36,8 @@ const translations = {
             p2: "Наша команда сертифицированных специалистов решает задачи любой сложности — от планового ТО до капитального ремонта. Мы ценим ваше время и всегда держим вас в курсе происходящего.",
             feature1Title: "Современное оборудование",
             feature1Desc: "Профессиональные стенды и диагностика",
-            feature2Title: "Гарантия на работы",
-            feature2Desc: "До 12 месяцев на все виды ремонта",
+            feature2Title: "Быстрое обслуживание",
+            feature2Desc: "Готовый результат в кратчайшие сроки",
             feature3Title: "Оригинальные запчасти",
             feature3Desc: "Только проверенные поставщики",
             galleryLabel: "Наш сервис",
@@ -93,10 +96,10 @@ const translations = {
             sectionTag: "Контакты",
             title: "Как нас",
             titleAccent: "найти",
-            address: "ул. Автомобильная, 12, Бельцы, Молдова",
-            phone: "+373 XXX XXX XX",
+            address: "str. Traian 8, MD-3100, Bălți",
+            phone: "+373 692 91 979",
             email: "info@ref-service.md",
-            hours: "Пн–Пт: 8:00–18:00 | Сб: 9:00–15:00",
+            hours: "Пн–Пт: 8:00–18:00 | Сб: 8:00–16:00",
             mapPlaceholder: "Карта загружается...",
             ctaTitle: "Запишитесь онлайн",
             ctaDesc: "Оставьте заявку и мы свяжемся с вами в течение 30 минут",
@@ -105,6 +108,7 @@ const translations = {
             messagePlaceholder: "Опишите проблему (необязательно)",
             submitBtn: "Отправить заявку",
             successMsg: "Спасибо! Мы свяжемся с вами скоро.",
+            errorMsg: "Ошибка отправки. Попробуйте позже.",
         },
         footer: {
             tagline: "Профессиональный авто сервис",
@@ -115,7 +119,7 @@ const translations = {
             workDays: "Понедельник – Пятница",
             workDaysHours: "8:00 – 18:00",
             workSat: "Суббота",
-            workSatHours: "9:00 – 15:00",
+            workSatHours: "8:00 – 16:00",
             workSun: "Воскресенье",
             workSunHours: "Выходной",
         },
@@ -130,9 +134,7 @@ const translations = {
         },
         hero: {
             badge: "Service auto profesional",
-            title: "REF",
-            titleSub: "SERVICE",
-            subtitle: "Reparații și întreținere auto de încredere în Moldova",
+            title: "Reparații și întreținere auto de încredere în Moldova",
             description:
                 "Diagnosticare, reparații climatizare și service complet pentru vehiculul tău. Lucrăm rapid, cinstit și calitativ.",
             ctaPrimary: "Programează-te",
@@ -149,8 +151,8 @@ const translations = {
             p2: "Echipa noastră de specialiști certificați rezolvă sarcini de orice complexitate — de la inspecții tehnice planificate la reparații capitale. Respectăm timpul tău și te ținem mereu la curent.",
             feature1Title: "Echipament modern",
             feature1Desc: "Standuri profesionale și diagnosticare",
-            feature2Title: "Garanție la lucrări",
-            feature2Desc: "Până la 12 luni pentru toate tipurile",
+            feature2Title: "Serviciu rapid",
+            feature2Desc: "Rezultat gata în timp minim",
             feature3Title: "Piese originale",
             feature3Desc: "Doar furnizori verificați",
             galleryLabel: "Serviceul nostru",
@@ -209,10 +211,10 @@ const translations = {
             sectionTag: "Contacte",
             title: "Cum să ne",
             titleAccent: "găsiți",
-            address: "str. Automobilă, 12, Bălți, Moldova",
-            phone: "+373 XXX XXX XX",
+            address: "str. Traian 8, MD-3100, Bălți",
+            phone: "+373 692 91 979",
             email: "info@ref-service.md",
-            hours: "Lun–Vin: 8:00–18:00 | Sâm: 9:00–15:00",
+            hours: "Lun–Vin: 8:00–18:00 | Sâm: 8:00–16:00",
             mapPlaceholder: "Harta se încarcă...",
             ctaTitle: "Programați-vă online",
             ctaDesc: "Lăsați o cerere și vă vom contacta în 30 de minute",
@@ -221,6 +223,7 @@ const translations = {
             messagePlaceholder: "Descrieți problema (opțional)",
             submitBtn: "Trimite cererea",
             successMsg: "Mulțumim! Vă vom contacta în curând.",
+            errorMsg: "Eroare la trimitere. Încercați mai târziu.",
         },
         footer: {
             tagline: "Service auto profesional",
@@ -356,14 +359,12 @@ function Header({ lang, setLang, t }) {
             <div className="container header-inner">
                 <a
                     href="#hero"
-                    className="logo"
                     onClick={(e) => {
                         e.preventDefault();
                         scrollTo("hero");
                     }}
                 >
-                    <span className="logo-ref">REF</span>
-                    <span className="logo-service">SERVICE</span>
+                    <img className="logo" src={"./logo.svg"} alt="logo" />
                 </a>
 
                 <nav
@@ -404,7 +405,10 @@ function Header({ lang, setLang, t }) {
                     >
                         <button
                             className={`lang-btn ${lang === "ru" ? "active" : ""}`}
-                            onClick={() => setLang("ru")}
+                            onClick={() => {
+                                setLang("ru");
+                                window.history.replaceState({}, "", "?lang=ru");
+                            }}
                             aria-pressed={lang === "ru"}
                         >
                             RU
@@ -414,7 +418,10 @@ function Header({ lang, setLang, t }) {
                         </span>
                         <button
                             className={`lang-btn ${lang === "ro" ? "active" : ""}`}
-                            onClick={() => setLang("ro")}
+                            onClick={() => {
+                                setLang("ro");
+                                window.history.replaceState({}, "", "?lang=ro");
+                            }}
                             aria-pressed={lang === "ro"}
                         >
                             RO
@@ -444,25 +451,33 @@ function Header({ lang, setLang, t }) {
 
 // ─── COMPONENT: HeroSection ───────────────────────────────────────────────────
 function HeroSection({ t }) {
+    const [imageIndex, setImageIndex] = useState(0);
+    const images = [
+        "./carrier.png",
+        "./eberspacher.png",
+        "./thermoking.png",
+        "./webasto.png",
+    ];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setImageIndex((prev) => (prev + 1) % 4);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
+
     const scrollTo = (id) =>
         document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
     return (
         <section id="hero" className="hero" aria-label="Главный блок">
-            <div className="hero-bg-shapes" aria-hidden="true">
-                <div className="shape shape-1" />
-                <div className="shape shape-2" />
-                <div className="shape shape-3" />
-            </div>
+            <div className="hero-bg-shapes" aria-hidden="true"></div>
             <div className="container hero-inner">
                 <div className="hero-content">
                     <div className="hero-badge">{t.badge}</div>
                     <h1 className="hero-title">
                         <span className="title-ref">{t.title}</span>
-                        <span className="title-dash">—</span>
-                        <span className="title-service">{t.titleSub}</span>
                     </h1>
-                    <p className="hero-subtitle">{t.subtitle}</p>
                     <p className="hero-desc">{t.description}</p>
                     <div className="hero-cta">
                         <button
@@ -482,56 +497,11 @@ function HeroSection({ t }) {
                 <div className="hero-visual" aria-hidden="true">
                     <div className="hero-card">
                         <div className="hero-card-icon">
-                            <svg
-                                width="64"
-                                height="64"
-                                viewBox="0 0 64 64"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M10 38l4-12h36l4 12"
-                                    stroke="currentColor"
-                                    strokeWidth="2.5"
-                                    strokeLinecap="round"
-                                />
-                                <rect
-                                    x="6"
-                                    y="38"
-                                    width="52"
-                                    height="14"
-                                    rx="3"
-                                    stroke="currentColor"
-                                    strokeWidth="2.5"
-                                />
-                                <circle
-                                    cx="16"
-                                    cy="52"
-                                    r="4"
-                                    stroke="currentColor"
-                                    strokeWidth="2.5"
-                                />
-                                <circle
-                                    cx="48"
-                                    cy="52"
-                                    r="4"
-                                    stroke="currentColor"
-                                    strokeWidth="2.5"
-                                />
-                                <path
-                                    d="M22 30l6-8h8l6 8"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                />
-                                <path
-                                    d="M32 20v-6M28 18l4-4 4 4"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                            </svg>
+                            <img
+                                src={images[imageIndex]}
+                                alt="Brand logo"
+                                className="brand-logo"
+                            />
                         </div>
                         <div className="hero-card-pulses">
                             <div className="pulse pulse-1" />
@@ -554,15 +524,15 @@ function HeroSection({ t }) {
 
 // ─── COMPONENT: AboutSection ──────────────────────────────────────────────────
 const GALLERY_IMAGES = [
-    { alt: "Рабочий бокс автосервиса REF-Service", emoji: "🔧" },
-    { alt: "Диагностическое оборудование REF-Service", emoji: "🖥️" },
-    { alt: "Зона ожидания клиентов REF-Service", emoji: "☕" },
-    { alt: "Стенд заправки кондиционеров REF-Service", emoji: "❄️" },
-    { alt: "Мастера автосервиса REF-Service", emoji: "👨‍🔧" },
-    { alt: "Склад запчастей REF-Service", emoji: "📦" },
+    { alt: "Рабочий бокс автосервиса REF-Service" },
+    { alt: "Диагностическое оборудование REF-Service" },
+    { alt: "Зона ожидания клиентов REF-Service" },
+    { alt: "Стенд заправки кондиционеров REF-Service" },
+    { alt: "Мастера автосервиса REF-Service" },
+    { alt: "Склад запчастей REF-Service" },
 ];
 
-function GalleryItem({ alt, emoji, index }) {
+function GalleryItem({ alt, index }) {
     const { ref, visible } = useScrollAnimation();
     return (
         <div
@@ -572,12 +542,7 @@ function GalleryItem({ alt, emoji, index }) {
             role="img"
             aria-label={alt}
         >
-            <div className="gallery-placeholder">
-                <span className="gallery-emoji">{emoji}</span>
-            </div>
-            <div className="gallery-overlay">
-                <span className="gallery-label">{alt}</span>
-            </div>
+            <div className="gallery-placeholder" />
         </div>
     );
 }
@@ -605,26 +570,23 @@ function AboutSection({ t }) {
                         <p>{t.p2}</p>
                         <div className="about-features">
                             <AboutFeature
-                                icon="⚙️"
+                                icon="⚙"
                                 title={t.feature1Title}
                                 desc={t.feature1Desc}
                             />
                             <AboutFeature
-                                icon="🛡️"
+                                icon="⚡"
                                 title={t.feature2Title}
                                 desc={t.feature2Desc}
                             />
                             <AboutFeature
-                                icon="✅"
+                                icon="✓"
                                 title={t.feature3Title}
                                 desc={t.feature3Desc}
                             />
                         </div>
                     </div>
                     <div className="about-gallery">
-                        <p className="gallery-section-label">
-                            {t.galleryLabel}
-                        </p>
                         <div className="gallery-grid">
                             {GALLERY_IMAGES.map((img, i) => (
                                 <GalleryItem key={i} index={i} {...img} />
@@ -658,94 +620,10 @@ function ServicesSection({ t }) {
                     ref={ref}
                     className={`service-card fade-up ${visible ? "visible" : ""}`}
                 >
-                    <div className="service-card-visual" aria-hidden="true">
-                        <div className="service-icon-wrap">
-                            <svg
-                                width="80"
-                                height="80"
-                                viewBox="0 0 80 80"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                aria-hidden="true"
-                            >
-                                <circle
-                                    cx="40"
-                                    cy="40"
-                                    r="38"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    opacity="0.15"
-                                />
-                                <path
-                                    d="M20 50 C20 35 30 25 40 25 C50 25 60 35 60 50"
-                                    stroke="currentColor"
-                                    strokeWidth="3"
-                                    strokeLinecap="round"
-                                    fill="none"
-                                />
-                                <path
-                                    d="M25 50 C25 38 31 30 40 30 C49 30 55 38 55 50"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    fill="none"
-                                    opacity="0.5"
-                                />
-                                <path
-                                    d="M32 50 C32 42 36 37 40 37 C44 37 48 42 48 50"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    fill="none"
-                                    opacity="0.3"
-                                />
-                                <circle
-                                    cx="40"
-                                    cy="52"
-                                    r="4"
-                                    fill="currentColor"
-                                />
-                                <line
-                                    x1="40"
-                                    y1="56"
-                                    x2="40"
-                                    y2="62"
-                                    stroke="currentColor"
-                                    strokeWidth="2.5"
-                                    strokeLinecap="round"
-                                />
-                                <line
-                                    x1="20"
-                                    y1="55"
-                                    x2="60"
-                                    y2="55"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    opacity="0.4"
-                                />
-                                <path
-                                    d="M30 42 L26 38"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                />
-                                <path
-                                    d="M50 42 L54 38"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                />
-                            </svg>
-                        </div>
-                        <div className="service-price-badge">
-                            <span className="price-from">{t.priceFrom}</span>
-                            <span className="price-value">{t.acPrice}</span>
-                            <span className="price-currency">
-                                {t.priceCurrency}
-                            </span>
-                        </div>
-                    </div>
+                    <div
+                        className="service-card-visual"
+                        aria-hidden="true"
+                    ></div>
                     <div className="service-card-content">
                         <h3>{t.acTitle}</h3>
                         <p>{t.acDesc}</p>
@@ -755,7 +633,7 @@ function ServicesSection({ t }) {
                             ))}
                         </ul>
                         <button
-                            className="btn btn-primary"
+                            className="btn btn-primary btn-lg"
                             onClick={() => scrollTo("contacts")}
                         >
                             {t.acCta}
@@ -794,16 +672,55 @@ function ReviewsSection({ t }) {
 function ContactsSection({ t }) {
     const [form, setForm] = useState({ name: "", phone: "", message: "" });
     const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
     const { ref, visible } = useScrollAnimation();
 
     const handleChange = (e) =>
         setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-    const handleSubmit = (e) => {
+    const sendToTelegram = async (data) => {
+        const message = `
+📋 Новая заявка с сайта REF-Service
+
+👤 Имя: ${data.name}
+📞 Телефон: ${data.phone}
+💬 Сообщение: ${data.message || "Не указано"}
+        `.trim();
+
+        try {
+            await axios.post(
+                `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+                {
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: message,
+                    parse_mode: "HTML",
+                },
+            );
+            return true;
+        } catch (err) {
+            console.error("Telegram error:", err);
+            return false;
+        }
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setSubmitted(true);
-        setForm({ name: "", phone: "", message: "" });
-        setTimeout(() => setSubmitted(false), 5000);
+        setLoading(true);
+        setError(false);
+
+        const success = await sendToTelegram(form);
+
+        setLoading(false);
+
+        if (success) {
+            setSubmitted(true);
+            setForm({ name: "", phone: "", message: "" });
+            setTimeout(() => setSubmitted(false), 5000);
+        } else {
+            setError(true);
+            setTimeout(() => setError(false), 5000);
+        }
     };
 
     return (
@@ -866,21 +783,16 @@ function ContactsSection({ t }) {
                             className="map-container"
                             aria-label="Карта расположения сервиса"
                         >
-                            <div className="map-placeholder">
-                                <span>🗺️</span>
-                                <p>{t.mapPlaceholder}</p>
-                                {/* TODO: Replace with real Google Maps embed */}
-                                {/* <iframe
-                  title="REF-Service на карте"
-                  src="https://maps.google.com/maps?q=Balti,Moldova&output=embed"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                /> */}
-                            </div>
+                            <iframe
+                                title="map"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2485.2685865505073!2d27.938108511719868!3d47.786504371086814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40cb67ebe8f5ae89%3A0xefd4385791d5cd38!2sREF%20-%20SERVICE%20Pronatalex%20SRL!5e1!3m2!1sru!2s!4v1776275700742!5m2!1sru!2s"
+                                width="100%"
+                                height="220"
+                                style={{ border: 0 }}
+                                allowFullScreen=""
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                            ></iframe>
                         </div>
                     </div>
 
@@ -893,6 +805,10 @@ function ContactsSection({ t }) {
                         {submitted ? (
                             <div className="form-success" role="alert">
                                 {t.successMsg}
+                            </div>
+                        ) : error ? (
+                            <div className="form-error" role="alert">
+                                {t.errorMsg}
                             </div>
                         ) : (
                             <form
@@ -909,6 +825,7 @@ function ContactsSection({ t }) {
                                     required
                                     autoComplete="name"
                                     aria-label={t.namePlaceholder}
+                                    disabled={loading}
                                 />
                                 <input
                                     type="tel"
@@ -919,6 +836,7 @@ function ContactsSection({ t }) {
                                     required
                                     autoComplete="tel"
                                     aria-label={t.phonePlaceholder}
+                                    disabled={loading}
                                 />
                                 <textarea
                                     name="message"
@@ -927,12 +845,14 @@ function ContactsSection({ t }) {
                                     placeholder={t.messagePlaceholder}
                                     rows={4}
                                     aria-label={t.messagePlaceholder}
+                                    disabled={loading}
                                 />
                                 <button
                                     type="submit"
-                                    className="btn btn-primary btn-full"
+                                    className="btn btn-primary btn-full btn-lg"
+                                    disabled={loading}
                                 >
-                                    {t.submitBtn}
+                                    {loading ? "Отправка..." : t.submitBtn}
                                 </button>
                             </form>
                         )}
@@ -953,10 +873,15 @@ function Footer({ t, nav }) {
         <footer className="footer" role="contentinfo">
             <div className="container footer-inner">
                 <div className="footer-brand">
-                    <div className="logo">
-                        <span className="logo-ref">REF</span>
-                        <span className="logo-service">SERVICE</span>
-                    </div>
+                    <a
+                        href="#hero"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            scrollTo("hero");
+                        }}
+                    >
+                        <img className="logo" src={"./logo.svg"} alt="logo" />
+                    </a>
                     <p className="footer-tagline">{t.tagline}</p>
                 </div>
 
@@ -1005,7 +930,11 @@ function Footer({ t, nav }) {
 
 // ─── APP ─────────────────────────────────────────────────────────────────────
 function App() {
-    const [lang, setLang] = useState("ru");
+    const [lang, setLang] = useState(() => {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("lang") === "ro" ? "ro" : "ru";
+    });
+
     const t = translations[lang];
 
     return (
@@ -1047,12 +976,12 @@ function App() {
                             "Профессиональный автосервис в Бельцах, Молдова",
                         address: {
                             "@type": "PostalAddress",
-                            streetAddress: "ул. Автомобильная, 12",
-                            addressLocality: "Бельцы",
+                            streetAddress: "str. Traian 8",
+                            addressLocality: "Bălți",
                             addressCountry: "MD",
                         },
-                        telephone: "+373XXXXXXXXX",
-                        openingHours: ["Mo-Fr 08:00-18:00", "Sa 09:00-15:00"],
+                        telephone: "+37369291979",
+                        openingHours: ["Mo-Fr 08:00-18:00", "Sa 08:00-16:00"],
                         priceRange: "$$",
                     })}
                 </script>

@@ -25,10 +25,10 @@ export function ContactsSection({ t }) {
             );
             setStatus("success");
             setForm({ name: "", phone: "", message: "" });
-        } catch {
+        } catch (err) {
             setStatus("error");
         }
-        setTimeout(() => setStatus("idle"), 5000);
+        setTimeout(() => setStatus("idle"), 4000);
     };
 
     const CONTACT_ITEMS = [

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import axios from "axios";
 import "../App.css";
-import { TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID } from "../constants";
+import { TELEGRAM_BOT_TOKEN, TELEGRAM_ID } from "../constants";
 export function ContactsSection({ t }) {
     const [form, setForm] = useState({ name: "", phone: "", message: "" });
     const [status, setStatus] = useState("idle"); // idle | loading | success | error
@@ -19,13 +19,14 @@ export function ContactsSection({ t }) {
             await axios.post(
                 `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
                 {
-                    chat_id: TELEGRAM_CHAT_ID,
+                    chat_id: TELEGRAM_ID,
                     text: message,
                 },
             );
             setStatus("success");
             setForm({ name: "", phone: "", message: "" });
         } catch (err) {
+            console.log(err);
             setStatus("error");
         }
         setTimeout(() => setStatus("idle"), 4000);

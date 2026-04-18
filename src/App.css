@@ -650,7 +650,13 @@ ul {
     overflow: hidden;
     box-shadow: var(--sh-md);
     transition: box-shadow var(--t);
+    margin-bottom: 40px;
 }
+
+.service-card:last-child {
+    margin-bottom: 0px;
+}
+
 .service-card:hover {
     box-shadow: var(--sh-lg);
 }
@@ -735,6 +741,8 @@ ul {
     border-radius: var(--r-lg);
     padding: 28px;
     transition: all var(--t);
+    display: flex;
+    flex-direction: column;
 }
 .review-card:hover {
     border-color: var(--primary);
@@ -767,6 +775,8 @@ ul {
     display: flex;
     align-items: center;
     gap: 12px;
+    margin-top: auto;
+    margin-bottom: 0px;
 }
 .review-avatar {
     width: 40px;

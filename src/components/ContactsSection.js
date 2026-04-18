@@ -33,18 +33,13 @@ export function ContactsSection({ t }) {
     };
 
     const CONTACT_ITEMS = [
-        { icon: "📍", label: "Адрес", value: <address>{t.address}</address> },
+        { icon: "📍", label: t.text1, value: <address>{t.address}</address> },
         {
             icon: "📞",
-            label: "Телефон",
+            label: t.text2,
             value: <a href={`tel:${t.phone.replace(/\s/g, "")}`}>{t.phone}</a>,
         },
-        {
-            icon: "✉️",
-            label: "Email",
-            value: <a href={`mailto:${t.email}`}>{t.email}</a>,
-        },
-        { icon: "🕐", label: "Режим работы", value: <span>{t.hours}</span> },
+        { icon: "🕐", label: t.text3, value: <span>{t.hours}</span> },
     ];
 
     return (

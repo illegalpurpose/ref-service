@@ -50,11 +50,9 @@ export function HeroSection({ t }) {
             </div>
 
             <div className="hero-stats container">
-                <StatItem value="7+" label={t.stat1} />
+                <StatItem value="20+" label={t.stat1} />
                 <div className="stat-divider" aria-hidden="true" />
                 <StatItem value="1200+" label={t.stat2} />
-                <div className="stat-divider" aria-hidden="true" />
-                <StatItem value="50+" label={t.stat3} />
             </div>
         </section>
     );

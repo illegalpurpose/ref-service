@@ -1,6 +1,6 @@
 {
     "name": "ref-service",
-    "homepage": "https://illegalpurpose.github.io/ref-service/",
+    "homepage": "https://ref-service.md",
     "version": "0.1.0",
     "private": true,
     "dependencies": {

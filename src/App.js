@@ -36,7 +36,7 @@ function App() {
                     {JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "AutoRepair",
-                        name: "REF Service",
+                        name: "REF - SERVICE Pronatalex SRL",
                         image: "https://ref-service.md/logo1080.png",
                         "@id": "https://ref-service.md",
                         url: "https://ref-service.md",

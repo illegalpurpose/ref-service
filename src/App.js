@@ -31,6 +31,51 @@ function App() {
                     property="og:locale"
                     content={lang === "ru" ? "ru_MD" : "ro_MD"}
                 />
+
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "AutoRepair",
+                        name: "REF Service",
+                        image: "https://ref-service.md/logo1080.png",
+                        "@id": "https://ref-service.md",
+                        url: "https://ref-service.md",
+                        telephone: "+37369291979",
+                        priceRange: "$$",
+                        address: {
+                            "@type": "PostalAddress",
+                            streetAddress: "str. Traian 8",
+                            postalCode: "MD-3100",
+                            addressLocality: "Bălți",
+                            addressCountry: "MD",
+                        },
+                        geo: {
+                            "@type": "GeoCoordinates",
+                            latitude: 47.7865044,
+                            longitude: 27.9406888,
+                        },
+                        openingHoursSpecification: [
+                            {
+                                "@type": "OpeningHoursSpecification",
+                                dayOfWeek: [
+                                    "Monday",
+                                    "Tuesday",
+                                    "Wednesday",
+                                    "Thursday",
+                                    "Friday",
+                                ],
+                                opens: "08:00",
+                                closes: "18:00",
+                            },
+                            {
+                                "@type": "OpeningHoursSpecification",
+                                dayOfWeek: "Saturday",
+                                opens: "08:00",
+                                closes: "16:00",
+                            },
+                        ],
+                    })}
+                </script>
             </Helmet>
 
             <Header lang={lang} setLang={setLang} t={t.nav} />

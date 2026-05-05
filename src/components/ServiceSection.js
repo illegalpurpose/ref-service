@@ -1,4 +1,3 @@
-import { ServiceFeature } from "./ServiceFeature";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import "../App.css";
 
@@ -28,17 +27,17 @@ export function ServicesSection({ t }) {
                         >
                             <div
                                 className="service-card-visual"
+                                style={{
+                                    backgroundImage: `url(
+                                        ${service.img}
+                                    )`,
+                                }}
                                 aria-hidden="true"
                             ></div>
 
                             <div className="service-card-content">
                                 <h3>{service.acTitle}</h3>
                                 <p>{service.acDesc}</p>
-                                <ul className="service-features-list">
-                                    {service.acFeatures.map((f, i) => (
-                                        <ServiceFeature key={i} text={f} />
-                                    ))}
-                                </ul>
                                 <button
                                     className="btn btn-primary btn-lg"
                                     onClick={() => scrollTo("contacts")}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { React, useState } from "react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import axios from "axios";
 import "../App.css";
@@ -37,7 +37,8 @@ export function ContactsSection({ t }) {
         {
             icon: "📞",
             label: t.text2,
-            value: <a href={`tel:${t.phone.replace(/\s/g, "")}`}>{t.phone}</a>,
+            value: t.phone,
+            additionalIcons: ["/telegram.svg", "/viber.svg", "/whatsapp.svg"],
         },
         { icon: "🕐", label: t.text3, value: <span>{t.hours}</span> },
     ];
@@ -58,20 +59,58 @@ export function ContactsSection({ t }) {
                         ref={ref}
                         className={`contacts-info fade-left ${visible ? "visible" : ""}`}
                     >
-                        {CONTACT_ITEMS.map(({ icon, label, value }) => (
-                            <div key={label} className="contact-item">
-                                <span
-                                    className="contact-icon"
-                                    aria-hidden="true"
-                                >
-                                    {icon}
-                                </span>
-                                <div>
-                                    <strong>{label}</strong>
-                                    {value}
+                        {CONTACT_ITEMS.map(
+                            ({ icon, label, value, additionalIcons }) => (
+                                <div key={label} className="contact-item">
+                                    <span
+                                        className="contact-icon"
+                                        aria-hidden="true"
+                                    >
+                                        {icon}
+                                    </span>
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            rowGap: "5px",
+                                        }}
+                                    >
+                                        <div>
+                                            <strong>{label}</strong>
+                                            {value}
+                                        </div>
+                                        {additionalIcons ? (
+                                            <div
+                                                style={{
+                                                    display: "flex",
+                                                    flexDirection: "row",
+                                                    columnGap: "20px",
+                                                }}
+                                            >
+                                                <img
+                                                    src={additionalIcons[0]}
+                                                    width={25}
+                                                    height={25}
+                                                    alt="icon"
+                                                />
+                                                <img
+                                                    src={additionalIcons[1]}
+                                                    width={25}
+                                                    height={25}
+                                                    alt="icon"
+                                                />
+                                                <img
+                                                    src={additionalIcons[2]}
+                                                    width={25}
+                                                    height={25}
+                                                    alt="icon"
+                                                />
+                                            </div>
+                                        ) : null}
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ),
+                        )}
                         <div
                             className="map-container"
                             aria-label="Карта расположения сервиса"

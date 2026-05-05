@@ -1,7 +1,7 @@
 // ─── CONFIG ───────────────────────────────────────────────────────────────────
 export const TELEGRAM_BOT_TOKEN =
     "8658071164:AAFSvwP2QckW0v4waVpswFq2SJ3lr0pEXnQ";
-export const TELEGRAM_ID = "540061163";
+export const TELEGRAM_ID = "-5205680902";
 
 // ─── TRANSLATIONS ─────────────────────────────────────────────────────────────
 export const translations = {
@@ -48,16 +48,81 @@ export const translations = {
             titleAccent: "делаем",
             items: [
                 {
-                    acTitle: "Ремонт и обслуживание кондиционеров",
+                    img: "https://images.unsplash.com/photo-1667893639219-5658691f2b18?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    acTitle: "Ремонт / Заправка автокондиционеров",
                     acDesc: "Полный спектр услуг по диагностике, заправке и ремонту автомобильных климатических систем. Работаем со всеми марками и моделями авто.",
-                    acFeatures: [
-                        "Диагностика системы кондиционирования",
-                        "Заправка фреоном",
-                        "Замена компрессора и фильтра",
-                        "Дезинфекция и чистка системы",
-                        "Ремонт испарителя и конденсатора",
-                        "Проверка на утечки",
-                    ],
+                    acCta: "Записаться",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=800&auto=format&fit=crop",
+                    acTitle: "Сварка TIG, Аргон, Полуавтомат",
+                    acDesc: "Профессиональные сварочные работы любой сложности для вашего автомобиля. Надежно восстанавливаем целостность кузовных деталей, выхлопных систем и агрегатов из алюминия.",
+                    acCta: "Записаться",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1658244500543-47f32dc51dc2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    acTitle: "Полировка фар",
+                    acDesc: "Восстановление заводской прозрачности и светопропускаемости автомобильной оптики. Улучшаем внешний вид автомобиля и повышаем безопасность при вождении в темное время суток.",
+                    acCta: "Записаться",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=800&auto=format&fit=crop",
+                    acTitle: "Ремонт ДВС",
+                    acDesc: "Капитальный и текущий ремонт бензиновых и дизельных двигателей. Возвращаем мотору былую мощность, устраняем масложор, течи и посторонние шумы.",
+                    acCta: "Записаться",
+                },
+                {
+                    img: "https://plus.unsplash.com/premium_photo-1663090140645-32b7d760853e?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    acTitle: "Ремонт ходовой",
+                    acDesc: "Качественное обслуживание подвески автомобиля для комфортной и безопасной езды. Эффективно устраняем стуки, скрипы и улучшаем управляемость на дороге.",
+                    acCta: "Записаться",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1581091872370-1c203d690c43?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    acTitle: "Компьютерная диагностика",
+                    acDesc: "Точное определение неисправностей электронных систем автомобиля с помощью современного дилерского мультимарочного оборудования. Быстрый поиск и сброс ошибок.",
+                    acCta: "Записаться",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1664695221759-21ed7295f697?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    acTitle: "С/У турбин, ремонт",
+                    acDesc: "Профессиональный демонтаж, установка и полное восстановление турбокомпрессоров. Устраняем потерю тяги, посторонний свист и повышенный расход масла.",
+                    acCta: "Записаться",
+                },
+                {
+                    img: "https://media.istockphoto.com/id/1164516716/photo/cut-muffler-car-with-a-platinum-catalyst.webp?a=1&b=1&s=612x612&w=0&k=20&c=pP9TZdYisSKtgQXtKwb-MHq4DHNPLab98BRbVZ0YClg=",
+                    acTitle: "Удаление сажевого фильтра",
+                    acDesc: "Комплексное (физическое и программное) удаление сажевого фильтра (DPF/FAP) и катализатора. Решаем проблемы с потерей мощности и аварийным режимом.",
+                    acCta: "Записаться",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
+                    acTitle: "Прошивка ЭБУ",
+                    acDesc: "Обновление программного обеспечения и ремонт электронных блоков управления. Клонирование, привязка новых блоков, устранение программных ошибок и корректное отключение неисправных систем.",
+                    acCta: "Записаться",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1583849692767-ca1b185af02e?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    acTitle: "Ремонт топливной системы (Дизель)",
+                    acDesc: "Точная диагностика и ремонт дизельной топливной аппаратуры (ТНВД, форсунки). Восстанавливаем ровную работу двигателя и устраняем проблемы с запуском на горячую/холодную.",
+                    acCta: "Записаться",
+                },
+                {
+                    img: "https://remzone.pl/wp-content/uploads/2025/07/kol.jpg",
+                    acTitle: "Развал схождения",
+                    acDesc: "Высокоточная регулировка углов установки колес для идеальной курсовой устойчивости. Предотвращаем неравномерный износ резины, устраняем увод автомобиля в сторону и обеспечиваем легкую управляемость.",
+                    acCta: "Записаться",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1563770660941-20978e870e26?q=80&w=800&auto=format&fit=crop",
+                    acTitle: "Ремонт авто-электрики",
+                    acDesc: "Поиск и устранение любых неисправностей в электрических цепях автомобиля. Ремонт штатных узлов и грамотная установка дополнительного оборудования.",
+                    acCta: "Записаться",
+                },
+                {
+                    img: "https://faeton-avto.com/mt-content/uploads/2025/08/obninsk-vibrostend-2.jpg",
+                    acTitle: "Диагностика ходовой (Вибро стенд)",
+                    acDesc: "Комплексная проверка состояния подвески на специализированном вибрационном стенде. Выявляем мельчайшие люфты и скрытые дефекты, невидимые при обычном осмотре.",
                     acCta: "Записаться",
                 },
             ],
@@ -108,7 +173,7 @@ export const translations = {
             title: "Как нас",
             titleAccent: "найти",
             address: "str. Traian 8, MD-3100, Bălți",
-            phone: "+373 692 91 979",
+            phone: "+373 692 91 979 +373 680 21 313",
             hours: "Пн–Пт: 8:00–18:00 | Сб: 8:00–16:00",
             ctaTitle: "Запишитесь онлайн",
             ctaDesc: "Оставьте заявку и мы свяжемся с вами в течение 30 минут",
@@ -182,17 +247,82 @@ export const translations = {
             titleAccent: "facem",
             items: [
                 {
+                    img: "https://images.unsplash.com/photo-1667893639219-5658691f2b18?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                     acTitle:
-                        "Reparații și întreținere aparate de aer condiționat",
-                    acDesc: "Gama completă de servicii de diagnosticare, reumplere cu freon și reparații ale sistemelor de climatizare auto. Lucrăm cu toate mărcile și modelele de mașini.",
-                    acFeatures: [
-                        "Diagnosticarea sistemului de climatizare",
-                        "Reumplerea cu freon",
-                        "Înlocuirea compresorului și a filtrului",
-                        "Dezinfectarea și curățarea sistemului",
-                        "Reparația evaporatorului și a condensatorului",
-                        "Verificarea scurgerilor",
-                    ],
+                        "Reparații / Reumplere sisteme de climatizare auto",
+                    acDesc: "Gama completă de servicii de diagnosticare, reumplere și reparații ale sistemelor de climatizare auto. Lucrăm cu toate mărcile și modelele de mașini.",
+                    acCta: "Programare",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=800&auto=format&fit=crop",
+                    acTitle: "Sudură TIG, argon, semiautomată",
+                    acDesc: "Lucrări profesionale de sudură de orice complexitate pentru mașina dumneavoastră. Refacem cu fiabilitate integritatea pieselor caroseriei, a sistemelor de eșapament și a agregatelor din aluminiu.",
+                    acCta: "Programare",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1658244500543-47f32dc51dc2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    acTitle: "Lustruirea farurilor",
+                    acDesc: "Restabilirea transparenței și a transmisiei luminii la nivel de fabrică a sistemului optic al autovehiculului. Îmbunătățim aspectul exterior al autovehiculului și sporim siguranța la conducere pe timp de noapte.",
+                    acCta: "Programare",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=800&auto=format&fit=crop",
+                    acTitle: "Reparații motor",
+                    acDesc: "Reparații capitale și curente ale motoarelor pe benzină și diesel. Redăm motorului puterea de odinioară, eliminăm consumul excesiv de ulei, scurgerile și zgomotele neobișnuite.",
+                    acCta: "Programare",
+                },
+                {
+                    img: "https://plus.unsplash.com/premium_photo-1663090140645-32b7d760853e?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    acTitle: "Reparații la trenul de rulare",
+                    acDesc: "Servicii de calitate pentru suspensia mașinii, pentru o conducere confortabilă și sigură. Eliminăm eficient zgomotele și scârțâiturile și îmbunătățim manevrabilitatea pe șosea.",
+                    acCta: "Programare",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1581091872370-1c203d690c43?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    acTitle: "Diagnosticare computerizată",
+                    acDesc: "Identificarea precisă a defecțiunilor sistemelor electronice ale autovehiculului cu ajutorul echipamentelor moderne multimarcă ale dealerului. Căutare rapidă și ștergere a erorilor.",
+                    acCta: "Programare",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1664695221759-21ed7295f697?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    acTitle: "Servicii pentru turbine, reparații",
+                    acDesc: "Demontare profesională, instalare și recondiționare completă a turbocompresoarelor. Remediem pierderea de tracțiune, zgomotele neobișnuite și consumul crescut de ulei.",
+                    acCta: "Programare",
+                },
+                {
+                    img: "https://media.istockphoto.com/id/1164516716/photo/cut-muffler-car-with-a-platinum-catalyst.webp?a=1&b=1&s=612x612&w=0&k=20&c=pP9TZdYisSKtgQXtKwb-MHq4DHNPLab98BRbVZ0YClg=",
+                    acTitle: "Demontarea filtrului de particule",
+                    acDesc: "Demontarea completă (fizică și software) a filtrului de particule (DPF/FAP) și a catalizatorului. Rezolvăm problemele legate de pierderea de putere și modul de urgență.",
+                    acCta: "Programare",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
+                    acTitle: "Programare ECU",
+                    acDesc: "Actualizarea software-ului și repararea unităților electronice de control. Clonare, conectarea de unități noi, remedierea erorilor de software și oprirea corectă a sistemelor defecte.",
+                    acCta: "Programare",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1583849692767-ca1b185af02e?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    acTitle: "Reparația sistemului de alimentare (Diesel)",
+                    acDesc: "Diagnosticare precisă și reparație a echipamentelor de alimentare diesel (pompă de alimentare, injectoare). Restabilim funcționarea uniformă a motorului și remediem problemele legate de pornirea la cald/la rece.",
+                    acCta: "Programare",
+                },
+                {
+                    img: "https://remzone.pl/wp-content/uploads/2025/07/kol.jpg",
+                    acTitle: "Convergență incorectă",
+                    acDesc: "Reglarea de înaltă precizie a unghiurilor de aliniere a roților pentru o stabilitate ideală a direcției. Prevenim uzura inegală a cauciucurilor, eliminăm devierea mașinii într-o parte și asigurăm o manevrabilitate ușoară.",
+                    acCta: "Programare",
+                },
+                {
+                    img: "https://images.unsplash.com/photo-1563770660941-20978e870e26?q=80&w=800&auto=format&fit=crop",
+                    acTitle: "Reparații electrice auto",
+                    acDesc: "Depistarea și remedierea oricăror defecțiuni ale circuitelor electrice ale autovehiculului. Repararea componentelor de serie și instalarea corectă a echipamentelor suplimentare.",
+                    acCta: "Programare",
+                },
+                {
+                    img: "https://faeton-avto.com/mt-content/uploads/2025/08/obninsk-vibrostend-2.jpg",
+                    acTitle: "Diagnosticare șasiu (banc de vibrații)",
+                    acDesc: "Verificare completă a stării suspensiei pe un banc de testare cu vibrații specializat. Identificăm cele mai mici jocuri și defecte ascunse, invizibile la o inspecție obișnuită.",
                     acCta: "Programare",
                 },
             ],
@@ -243,7 +373,7 @@ Mulțumesc mult echipei de profesioniști! 👍👍`,
             title: "Cum ne puteți",
             titleAccent: "găsi",
             address: "str. Traian 8, MD-3100, Bălți",
-            phone: "+373 692 91 979",
+            phone: "+373 692 91 979 +373 680 21 313",
             hours: "Luni–Vineri: 8:00–18:00 | Sâmbătă: 8:00–16:00",
             ctaTitle: "Programați-vă online",
             ctaDesc:

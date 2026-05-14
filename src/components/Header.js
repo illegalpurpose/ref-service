@@ -42,7 +42,7 @@ export function Header({ lang, setLang, t }) {
                     className={`nav ${menuOpen ? "open" : ""}`}
                     aria-label="Основная навигация"
                 >
-                    {["about", "services", "reviews", "contacts"].map((id) => (
+                    {["about", "services", "works", "reviews", "contacts"].map((id) => (
                         <button
                             key={id}
                             className="nav-link"

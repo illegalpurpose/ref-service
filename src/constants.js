@@ -14,6 +14,7 @@ export const translations = {
         nav: {
             about: "О сервисе",
             services: "Услуги",
+            works: "Примеры работ",
             reviews: "Отзывы",
             contacts: "Контакты",
             cta: "Записаться",
@@ -127,6 +128,11 @@ export const translations = {
                 },
             ],
         },
+        works: {
+            sectionTag: "Примеры работ",
+            title: "Наши",
+            titleAccent: "работы",
+        },
         reviews: {
             sectionTag: "Отзывы",
             title: "Что говорят",
@@ -213,6 +219,7 @@ export const translations = {
         nav: {
             about: "Despre serviciu",
             services: "Servicii",
+            works: "Exemple de lucrări",
             reviews: "Recenzii",
             contacts: "Contacte",
             cta: "Programare",
@@ -327,6 +334,11 @@ export const translations = {
                 },
             ],
         },
+        works: {
+            sectionTag: "Exemple de lucrări",
+            title: "Lucrările",
+            titleAccent: "noastre",
+        },
         reviews: {
             sectionTag: "Recenzii",
             title: "Ce spun",
@@ -410,6 +422,13 @@ export const BRANDS = [
     { name: "Eberspächer", src: "./eberspacher.png" },
     { name: "Thermo King", src: "./thermoking.png" },
     { name: "Webasto", src: "./webasto.png" },
+];
+
+export const WORKS = [
+    { src: "./work1.jpg" },
+    { src: "./work2.jpg" },
+    { src: "./work3.jpg" },
+    { src: "./work4.jpg" },
 ];
 
 export const GALLERY_SLIDES = [

@@ -5,6 +5,7 @@ import { Header } from "./components/Header";
 import { HeroSection } from "./components/HeroSection";
 import { AboutSection } from "./components/AboutSection";
 import { ServicesSection } from "./components/ServiceSection";
+import { WorksSection } from "./components/WorksSection";
 import { ReviewsSection } from "./components/ReviewsSection";
 import { ContactsSection } from "./components/ContactsSection";
 import { Footer } from "./components/Footer";
@@ -83,6 +84,7 @@ function App() {
                 <HeroSection t={t.hero} />
                 <AboutSection t={t.about} />
                 <ServicesSection t={t.services} />
+                <WorksSection t={t.works} />
                 <ReviewsSection t={t.reviews} />
                 <ContactsSection t={t.contacts} />
             </main>

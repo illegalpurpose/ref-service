@@ -42,15 +42,17 @@ export function Header({ lang, setLang, t }) {
                     className={`nav ${menuOpen ? "open" : ""}`}
                     aria-label="Основная навигация"
                 >
-                    {["about", "services", "works", "reviews", "contacts"].map((id) => (
-                        <button
-                            key={id}
-                            className="nav-link"
-                            onClick={() => scrollTo(id)}
-                        >
-                            {t[id]}
-                        </button>
-                    ))}
+                    {["about", "services", "works", "reviews", "contacts"].map(
+                        (id) => (
+                            <button
+                                key={id}
+                                className="nav-link"
+                                onClick={() => scrollTo(id)}
+                            >
+                                {t[id]}
+                            </button>
+                        ),
+                    )}
                 </nav>
 
                 <div className="header-actions">

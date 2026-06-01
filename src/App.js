@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { translations } from "./constants";
 import { Helmet } from "react-helmet";
 import { Header } from "./components/Header";
@@ -12,6 +12,9 @@ import { Footer } from "./components/Footer";
 
 // ─── APP ─────────────────────────────────────────────────────────────────────
 function App() {
+    useEffect(() => {
+        console.log(process.env.REACT_APP_TELEGRAM_ID);
+    }, []);
     const [lang, setLang] = useState(() => {
         const params = new URLSearchParams(window.location.search);
         return params.get("lang") === "ro" ? "ro" : "ru";

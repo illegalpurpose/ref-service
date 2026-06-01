@@ -139,7 +139,7 @@ export function ContactsSection({ t }) {
                                 title="REF-Service на карте"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2485.2685865505073!2d27.938108511719868!3d47.786504371086814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40cb67ebe8f5ae89%3A0xefd4385791d5cd38!2sREF%20-%20SERVICE%20Pronatalex%20SRL!5e1!3m2!1sru!2s!4v1776275700742!5m2!1sru!2s"
                                 width="100%"
-                                height="220"
+                                height="100%"
                                 style={{ border: 0 }}
                                 allowFullScreen
                                 loading="lazy"
@@ -198,7 +198,8 @@ export function ContactsSection({ t }) {
                                     disabled={status === "loading"}
                                 />
                                 <div
-                                    class="g-recaptcha"
+                                    className="g-recaptcha"
+                                    data-size="compact"
                                     data-sitekey="6Le7TgctAAAAACrk2yJMwBoE6_tgaMtyxgX-V7uX"
                                     data-theme="dark"
                                     data-callback="onSuccess"

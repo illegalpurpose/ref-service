@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TELEGRAM_BOT_TOKEN, translations } from "./constants";
+import { TELEGRAM_BOT_TOKEN, TELEGRAM_ID, translations } from "./constants";
 import { Helmet } from "react-helmet";
 import { Header } from "./components/Header";
 import { HeroSection } from "./components/HeroSection";
@@ -12,9 +12,6 @@ import { Footer } from "./components/Footer";
 
 // ─── APP ─────────────────────────────────────────────────────────────────────
 function App() {
-    useEffect(() => {
-        console.log(TELEGRAM_BOT_TOKEN);
-    }, []);
     const [lang, setLang] = useState(() => {
         const params = new URLSearchParams(window.location.search);
         return params.get("lang") === "ro" ? "ro" : "ru";

@@ -1,6 +1,6 @@
 // ─── CONFIG ───────────────────────────────────────────────────────────────────
 export const TELEGRAM_BOT_TOKEN = process.env.REACT_APP_TELEGRAM_BOT_TOKEN;
-export const TELEGRAM_ID = process.env.REACT_APP_TELEGRAM_BOT_ID;
+export const TELEGRAM_ID = process.env.REACT_APP_TELEGRAM_ID;
 
 // ─── TRANSLATIONS ─────────────────────────────────────────────────────────────
 export const translations = {

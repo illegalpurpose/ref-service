@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { TELEGRAM_BOT_TOKEN, TELEGRAM_ID, translations } from "./constants";
+import { useState } from "react";
+import { translations } from "./constants";
 import { Helmet } from "react-helmet";
 import { Header } from "./components/Header";
 import { HeroSection } from "./components/HeroSection";

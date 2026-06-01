@@ -37,8 +37,8 @@ jobs:
             - name: Build project
               run: npm run build
               env:
-                  REACT_APP_TELEGRAM_BOT_ID: ${{ vars.REACT_APP_TELEGRAM_BOT_ID }}
-                  REACT_APP_TELEGRAM_BOT_TOKEN: ${{ vars.REACT_APP_TELEGRAM_BOT_TOKEN }}
+                  REACT_APP_TELEGRAM_BOT_ID: ${{ secrets.REACT_APP_TELEGRAM_BOT_ID }}
+                  REACT_APP_TELEGRAM_BOT_TOKEN: ${{ secrets.REACT_APP_TELEGRAM_BOT_TOKEN }}
 
             - name: Setup Pages
               uses: actions/configure-pages@v5

@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import axios from "axios";
 import "../App.css";
@@ -11,15 +11,22 @@ export function ContactsSection({ t }) {
     const [captchaToken, setCaptchaToken] = useState(null);
     const [captchaExpired, setCaptchaExpired] = useState(null);
 
-    const onSuccess = (token) => {
-        setCaptchaToken(token);
-        setCaptchaExpired(false);
-    };
+    useEffect(() => {
+        window.onSuccess = (token) => {
+            setCaptchaToken(token);
+            setCaptchaExpired(false);
+        };
 
-    const onExpired = (token) => {
-        setCaptchaToken(null);
-        setCaptchaExpired(true);
-    };
+        window.onExpired = (token) => {
+            setCaptchaToken(null);
+            setCaptchaExpired(true);
+        };
+
+        return () => {
+            delete window.onSuccess;
+            delete window.onExpired;
+        };
+    }, []);
 
     const handleChange = (e) =>
         setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -202,7 +209,8 @@ export function ContactsSection({ t }) {
                                     className="btn btn-primary btn-full btn-lg"
                                     disabled={
                                         status === "loading" ||
-                                        (!captchaToken && !captchaExpired)
+                                        !captchaToken ||
+                                        captchaExpired
                                     }
                                 >
                                     {status === "loading"

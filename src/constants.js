@@ -1,7 +1,7 @@
 // ─── CONFIG ───────────────────────────────────────────────────────────────────
 export const TELEGRAM_BOT_TOKEN =
     "8658071164:AAFSvwP2QckW0v4waVpswFq2SJ3lr0pEXnQ";
-export const TELEGRAM_ID = "-1003885961802";
+export const TELEGRAM_ID = "-1003732882056"; //"-1003885961802"
 
 // ─── TRANSLATIONS ─────────────────────────────────────────────────────────────
 export const translations = {

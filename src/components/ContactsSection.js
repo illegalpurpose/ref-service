@@ -3,10 +3,23 @@ import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import axios from "axios";
 import "../App.css";
 import { TELEGRAM_BOT_TOKEN, TELEGRAM_ID } from "../constants";
+
 export function ContactsSection({ t }) {
     const [form, setForm] = useState({ name: "", phone: "", message: "" });
     const [status, setStatus] = useState("idle"); // idle | loading | success | error
     const { ref, visible } = useScrollAnimation();
+    const [captchaToken, setCaptchaToken] = useState(null);
+    const [captchaExpired, setCaptchaExpired] = useState(null);
+
+    const onSuccess = (token) => {
+        setCaptchaToken(token);
+        setCaptchaExpired(false);
+    };
+
+    const onExpired = (token) => {
+        setCaptchaToken(null);
+        setCaptchaExpired(true);
+    };
 
     const handleChange = (e) =>
         setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -177,10 +190,21 @@ export function ContactsSection({ t }) {
                                     rows={4}
                                     disabled={status === "loading"}
                                 />
+                                <div
+                                    class="g-recaptcha"
+                                    data-sitekey="6Le7TgctAAAAACrk2yJMwBoE6_tgaMtyxgX-V7uX"
+                                    data-theme="dark"
+                                    data-callback="onSuccess"
+                                    data-expired-callback="onExpired"
+                                />
                                 <button
                                     type="submit"
                                     className="btn btn-primary btn-full btn-lg"
-                                    disabled={status === "loading"}
+                                    disabled={
+                                        status === "loading" &&
+                                        captchaToken &&
+                                        !captchaExpired
+                                    }
                                 >
                                     {status === "loading"
                                         ? t.loadingBtn

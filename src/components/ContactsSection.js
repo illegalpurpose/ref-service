@@ -12,7 +12,6 @@ export function ContactsSection({ t }) {
     const [captchaExpired, setCaptchaExpired] = useState(null);
 
     useEffect(() => {
-        console.log(TELEGRAM_ID);
         window.onSuccess = (token) => {
             setCaptchaToken(token);
             setCaptchaExpired(false);

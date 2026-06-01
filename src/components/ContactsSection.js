@@ -201,9 +201,8 @@ export function ContactsSection({ t }) {
                                     type="submit"
                                     className="btn btn-primary btn-full btn-lg"
                                     disabled={
-                                        status === "loading" &&
-                                        captchaToken &&
-                                        !captchaExpired
+                                        status === "loading" ||
+                                        (!captchaToken && !captchaExpired)
                                     }
                                 >
                                     {status === "loading"

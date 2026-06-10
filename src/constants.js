@@ -428,6 +428,14 @@ export const WORKS = [
     { src: "./work2.jpg" },
     { src: "./work3.jpg" },
     { src: "./work4.jpg" },
+
+    { src: "./work5.jpg" },
+    { src: "./work6.jpg" },
+    { src: "./work7.jpg" },
+    { src: "./work8.jpg" },
+    { src: "./work9.jpg" },
+    { src: "./work10.jpg" },
+    { src: "./work11.jpg" },
 ];
 
 export const GALLERY_SLIDES = [

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../App.css";
 export function Footer({ t, nav }) {
     const year = new Date().getFullYear();
@@ -56,6 +57,11 @@ export function Footer({ t, nav }) {
             <div className="footer-bottom">
                 <p>
                     © {year} REF-Service. {t.rights}.
+                    <br />
+                    Developed by{" "}
+                    <Link to="mailto:ilia.turturica@gmail.com">
+                        ilia.turturica@gmail.com
+                    </Link>
                 </p>
             </div>
         </footer>
